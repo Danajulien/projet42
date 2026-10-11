@@ -19,6 +19,26 @@
 
 
 //SYSTEME DE GENERATION DE GRILLE DE 4x4 CHIFFRES ETANT UNE POTENTIELLE SOLUTION 
+/*
+il faudrait un systeme de remplissage intelligent qui ne remplisse en premier les case qui sont obligatoirement une valeur
+    comment le savoir ? on le sait pour certain cas, comme quand le chiffre clue est 4, 
+    on sait que le 1 est forcement au tout debut, puis que ca fait  2 3 4.
+    on sait que quqnd le clue est 1, on sait que le 4 est forcement au tout debut
+    
+    puis apres quand on veut remplir un trou, on regarde si sur la meme ligne 
+    ou la meme colonne il y a deja ce chiffre. Si oui on ne le pose pas, et on itere jusqu'au 
+    suivant
+    on regarde aussi si le chiffre qu on veut poser peut etre poser. exemple, on sait qu on ne 
+    peut PAS mettre un 4 en debut de grille si l'indice n'est pas 1
+
+    une fois toute la grille genere, on la teste , mais normalement si on la remplie 
+    recursivement en suivant un ordre logique, et les conditions, a la fin on reussi
+    obligatoirement a avoir un resultat
+
+*/
 
 
 //SYSTEME DE CHECK SI UNE GRILLE DE 4x4 CHIFFRE REMPLIE LA CONDITION//
+/*
+lecture d'une ligne 
+*/

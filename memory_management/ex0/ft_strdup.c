@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jlodenot <jlodenot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/12 15:14:20 by marvin            #+#    #+#             */
-/*   Updated: 2026/10/12 15:14:20 by marvin           ###   ########.fr       */
+/*   Created: 2026/10/12 15:14:20 by jlodenot          #+#    #+#             */
+/*   Updated: 2026/10/13 00:28:42 by jlodenot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@ char	*ft_strdup(char *src)
 	int	*copy;
 	int	i;
 
+    i = 0;
     while (src[i] != '\0')
 	{
         i++;
@@ -31,3 +32,4 @@ char	*ft_strdup(char *src)
     copy[i] = '\0';
     return (copy);
 }
+//sof aide 

@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ultimate_range.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jlodenot <jlodenot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/12 15:36:56 by marvin            #+#    #+#             */
-/*   Updated: 2026/10/12 15:36:56 by marvin           ###   ########.fr       */
+/*   Created: 2026/10/12 15:36:56 by jlodenot          #+#    #+#             */
+/*   Updated: 2026/10/12 19:30:44 by jlodenot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
+
 #include <stdio.h>
 
 int ft_ultimate_range(int **range, int min, int max)

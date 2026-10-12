@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   fonctions.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: legiacal <legiacal@learner.42.tech>        +#+  +:+       +#+        */
+/*   By: jlodenot <jlodenot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 14:41:31 by legiacal          #+#    #+#             */
-/*   Updated: 2026/10/10 14:41:37 by legiacal         ###   ########.fr       */
+/*   Updated: 2026/10/11 15:05:09 by jlodenot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
+
 void ft_putchar(char c)
 {
 	write(1, &c, 1);
@@ -27,15 +27,6 @@ void    ft_putstr(char* str, int n)
     }
     if (n == 1)
         write(1, "\n", 1);
-}
-
-void display (int argc, int *tab_soluce)
-{
-	int i;
-	int k;
-
-	i = 0;
-	k = 1;
 }
 
 // int		main(int argc, char **argc)

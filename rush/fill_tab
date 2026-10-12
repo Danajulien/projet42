@@ -1,0 +1,62 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fill_tab                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jlodenot <jlodenot@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/11 15:30:05 by jlodenot          #+#    #+#             */
+/*   Updated: 2026/10/11 16:39:03 by jlodenot         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int *fill_tab(int **tab)
+{
+    //on a tab[x][y] avec x=0 et x =5 les indice gauche et droite, et y 0 et 5 les indice haut et bas
+    int potentiel_n = 0;
+    int row = 0;
+    int col = 0;
+    int line_done = 0;
+    int row_done = 0;
+    
+    int dir_x = 1;//1 ->  , <- -1
+    int dir_y = 0;//1 bas\/  -1 /\   */
+    while(row_done == 0)// premier passage avec les 1 et 4
+    {
+        while(line_done == 0)
+        {
+            if (tab[row + 1][0] == 4)
+            col++
+        }
+        dir_x *= -1;
+        row++;
+    }
+}
+void    write_line(int tab[][], int index_ligne, int index_colonne, int dir_x, int dir_y)
+{
+    int num_to_write = 1;
+    if (dir_x > 0)
+        int i_x = 1;
+    else if (dir_x < 0)
+        int i_x = 4
+    else
+        int i_x = index_colonne;
+
+    if (dir_x > 0)
+        int i_y = 1;
+    else if (dir_x < 0)
+        int i_y = 4
+    else
+        int i_y = index_ligne;
+    do while (i_x < 4 || i_x > 0)
+    {
+        tab[ligne][i] = i
+        do while (i_y < 4 || i_y > 0)
+        {
+            i_y += dir_y;
+        }
+        i_x += dir_x
+    }
+}
+
+void    write_col(int tab[][], colonne, indice, direction)

@@ -12,24 +12,26 @@
 
 #include <stdio.h>
 
-int is_num_number_of(char c, char *str)
-{
-	int	i;
-
-	i = 0;
-	while(str[i] != c)
-	{
-		i++;
-	}
-	return (i);
-}
-
 int ft_strlen(char *str)//sert aussi a savoir quel chiffre est un char dans sa base
 {
     int	i;
 
 	i = 0;
 	while(str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
+
+int is_num_number_of(char c, char *str)
+{
+	int	i;
+	int size_number;
+
+	i = 0;
+	size_number = ft_strlen(str);
+	while(str[i] != c)
 	{
 		i++;
 	}
@@ -69,19 +71,18 @@ int	to_power(int num, int power)
 int ft_convert_to_int(char *nbr, char *base_from)
 {
     int size_base_from;
-	//int	size_base_to;
 	int i;
 	int	base_in_int;
+	int size_number;
 	
 	size_base_from = ft_strlen(base_from);
-	printf("longueur %i\n", ft_strlen(base_from));
-	//size_base_to = ft_strlen(base_to, '\0');
+	size_number = ft_strlen(nbr);
 	i = 0;
 	base_in_int = 0;
-	while(nbr[i] != '\0')
+	while(nbr[size_number - i - 1] != '\0')
 	{
-		base_in_int += is_num_number_of(nbr[i], base(to_power  (size_base_from, i + 1));
-		printf("%i", is_num_number_of(nbr[i], nbr));
+		//resultat = position du caractere dans sa table * size de sa base/\(exponantiel sa pos dans la string)
+		base_in_int += is_num_number_of(nbr[size_number - i - 1], base_from) * (to_power(size_base_from, i));
 		i++;
 	}
 	return base_in_int;
@@ -90,7 +91,7 @@ int ft_convert_to_int(char *nbr, char *base_from)
 int	main(void)
 {
 	//char *base1 = {"0123456789"};
-	char *num = "ff";
+	char *num = "f00";
 	char *base2 = {"0123456789abcdef"};
 	printf("%i\n", ft_convert_to_int(num, base2));
 	return 0;

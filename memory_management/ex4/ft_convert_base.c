@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <stdlib.h>
+int is_valid_base(char *base);
 
 int is_num_number_of(char c, char *str)
 {
@@ -18,18 +20,6 @@ int is_num_number_of(char c, char *str)
 
 	i = 0;
 	while(str[i] != c)
-	{
-		i++;
-	}
-	return (i);
-}
-
-int ft_strlen(char *str)
-{
-    int	i;
-
-	i = 0;
-	while(str[i] != '\0')
 	{
 		i++;
 	}
@@ -48,73 +38,76 @@ int	to_power(int num, int power)
 	return (i);
 }
 
-// char *ft_convert_base(char *nbr, char *base_from, char *base_to)
-// {
-//     int size_base_from;
-// 	int	size_base_to;
-// 	int i;
-// 	int	base_in_int;
-	
-// 	size_base_from = ft_strlen(base_from, '\0');
-// 	size_base_to = ft_strlen(base_to, '\0');
-// 	i = 0;
-// 	base_in_int = 0;
-// 	while(nbr[i] != '\0')
-// 	{
-// 		base_in_int += pft_strlen(base_from, str[i]) * (to_power(ft_strlen(base_from, '\0'), ft_strlen(nbr, nbr[i])));
-// 	}
-// 	return base_in_int;
-// }
-
 char *int_to_base(int num_int, char *base_to)
 {
-	// on prendre num / size_base
-	//j ai besoin de savoir combien de chiffre j ai dans mon nombre en int, et combien ca va faire de chiffre dans la base , pour pouvoir malloc le bon nombre de char
-	// faut diviser un nombre par sa base jusqu a ce qu on ai 0, et le nombre d iteration donnera le nombre de chiffre 
-	int	nbr_len;
-	char chiffre_char;
-	int i;
+	int		nbr_len;//nombre de chiffre qu,il faut pour ecrire num_int en base_to
+	int 	i;
+	int		copy_int;
+	char	*new_nbr;
 
-	nbr_len = 0
-	while (num_int )
-	if (num / ft_strlen(base_to) == 0)
+	nbr_len = 0;
+	copy_int = num_int;
+	while (copy_int > 0 )
 	{
-		= num % ft_strlen(base_to)
+		nbr_len++;
+		copy_int /= is_num_number_of('\0', base_to);
 	}
+	copy_int = num_int;
+	i = nbr_len - 1;
+	new_nbr = malloc((nbr_len + 1) * sizeof(char));
+	if (new_nbr == NULL)
+		return NULL;
+	while (i >= 0)
+	{
+		new_nbr[i] = base_to[copy_int % is_num_number_of('\0', base_to)];
+		copy_int /= is_num_number_of('\0', base_to);
+		i--;
+	}
+	new_nbr[nbr_len] = '\0';
+	return (new_nbr);
 }
 
-int	recursive_itob(int num, char* base, char c)
-{
-	
-}
-
-char *ft_convert_to_int(char *nbr, char *base_from)
+int ft_convert_to_int(char *nbr, char *base_from)
 {
     int size_base_from;
-	//int	size_base_to;
 	int i;
 	int	base_in_int;
+	int size_num;
 	
-	size_base_from = ft_strlen(base_from);
-	printf("longueur %i\n", ft_strlen(base_from));
-	//size_base_to = ft_strlen(base_to, '\0');
+	size_base_from = is_num_number_of('\0', base_from);
+	size_num = is_num_number_of('\0', nbr);
+	//i = is_num_number_of('\0', nbr) - 1;
 	i = 0;
 	base_in_int = 0;
 	while(nbr[i] != '\0')
 	{
-		base_in_int += is_num_number_of(nbr[i], base(to_power  (size_base_from, i + 1));
-		printf("%i", is_num_number_of(nbr[i], nbr));
+		base_in_int += is_num_number_of(nbr[i], base_from)*(to_power  (size_base_from, size_num - 1 - i));
+		//printf("%i is_num_number_of num\n", is_num_number_of(nbr[i], nbr));
 		i++;
 	}
 	return base_in_int;
 }
+char *ft_convert_base(char *nbr, char *base_from, char *base_to)
+{
+	if ((is_valid_base(base_from) && is_valid_base(base_to)) == 0)
+		return NULL;
+	return (int_to_base(ft_convert_to_int(nbr, base_from), base_to));
+}
 
 int	main(void)
 {
-	//char *base1 = {"0123456789"};
-	char *num = "ff";
-	char *base2 = {"0123456789abcdef"};
-	printf("%i\n", ft_convert_to_int(num, base2));
+	char *base_binaire = {"01"};
+	char *base1 = {"0123456789"};
+	char *num = "777";
+	char *base2 = {"hornyHORSEs"};
+	char *nbr_converted = ft_convert_base(num, base1, base2);
+	if (nbr_converted == NULL)
+		return (1);
+	//printf("%i\n", ft_convert_to_int(num, base_binaire));
+	printf("%s", nbr_converted);
+	//printf("%s", int_to_base(255, base2));
+	free(nbr_converted);
+
 	return 0;
 }
 /*

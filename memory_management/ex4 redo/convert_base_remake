@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+/*
+je prendre une string represantant un nombre dans une base_a , et je dois sortir une string represantant ce nombre dans une base_b
+
+je decoupe la string caractere par caractere 
+je vérifie s'il y a un - au debut
+    si oui je cree une une variable is_neg = 1 qui me servira a allouer un character de plus pour le - avec malloc
+je parcours la chaine character par character avec un i
+je decoupe les charactere en partant de la droite 
+je cree un resultat en int 
+je convertit ce int en l'autre base 
+
+*/

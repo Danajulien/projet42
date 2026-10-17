@@ -38,7 +38,7 @@ int	to_power(int num, int power)
 	return (i);
 }
 
-char *int_to_base(int num_int, char *base_to)
+char *int_to_base(int num_int, char *base_to, int is_neg)
 {
 	int		nbr_len;//nombre de chiffre qu,il faut pour ecrire num_int en base_to
 	int 	i;
@@ -53,17 +53,17 @@ char *int_to_base(int num_int, char *base_to)
 		copy_int /= is_num_number_of('\0', base_to);
 	}
 	copy_int = num_int;
-	i = nbr_len - 1;
-	new_nbr = malloc((nbr_len + 1) * sizeof(char));
-	if (new_nbr == NULL)
-		return NULL;
-	while (i >= 0)
+	i = nbr_len - 1 + is_neg;
+	new_nbr = malloc((nbr_len + 1 + is_neg) * sizeof(char));
+	while (i >= is_neg && new_nbr != NULL)
 	{
 		new_nbr[i] = base_to[copy_int % is_num_number_of('\0', base_to)];
 		copy_int /= is_num_number_of('\0', base_to);
 		i--;
 	}
-	new_nbr[nbr_len] = '\0';
+	if (is_neg == 1)
+		new_nbr[0] = '-';
+	new_nbr[nbr_len + is_neg] = '\0';
 	return (new_nbr);
 }
 
@@ -73,34 +73,48 @@ int ft_convert_to_int(char *nbr, char *base_from)
 	int i;
 	int	base_in_int;
 	int size_num;
+	int is_neg;
 	
 	size_base_from = is_num_number_of('\0', base_from);
-	size_num = is_num_number_of('\0', nbr);
-	//i = is_num_number_of('\0', nbr) - 1;
+	is_neg = 0;
+	if (nbr[0] == '-')
+	{
+		is_neg = 1;
+	}
+	size_num = (is_num_number_of('\0', nbr) - is_neg);
 	i = 0;
 	base_in_int = 0;
-	while(nbr[i] != '\0')
+	while(nbr[i + is_neg] != '\0')
 	{
-		base_in_int += is_num_number_of(nbr[i], base_from)*(to_power  (size_base_from, size_num - 1 - i));
-		//printf("%i is_num_number_of num\n", is_num_number_of(nbr[i], nbr));
+		base_in_int += is_num_number_of(nbr[i + is_neg], base_from)*(to_power  (size_base_from, size_num - 1 - i));
 		i++;
 	}
+	if (nbr[0] == '-')
+		return -base_in_int;
 	return base_in_int;
 }
 char *ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	if ((is_valid_base(base_from) && is_valid_base(base_to)) == 0)
+	int is_neg;
+	int nbr_int;
+
+	if ((is_valid_base(base_from) == 0 || is_valid_base(base_to)) == 0)
 		return NULL;
-	return (int_to_base(ft_convert_to_int(nbr, base_from), base_to));
+	nbr_int = ft_convert_to_int(nbr, base_from);
+	if (nbr_int < 0)
+		is_neg = 1;
+	else
+		is_neg = 0;
+	return (int_to_base(-nbr_int, base_to, is_neg));
 }
 
 int	main(void)
 {
-	char *base_binaire = {"01"};
-	char *base1 = {"0123456789"};
-	char *num = "777";
-	char *base2 = {"hornyHORSEs"};
-	char *nbr_converted = ft_convert_base(num, base1, base2);
+	//char *base_binaire = {"01"};
+	char *base_10 = {"0123456789"};
+	char *num = "-fg";
+	char *base_hexa = {"0123456789abcdef"};
+	char *nbr_converted = ft_convert_base(num, base_hexa, base_10);
 	if (nbr_converted == NULL)
 		return (1);
 	//printf("%i\n", ft_convert_to_int(num, base_binaire));

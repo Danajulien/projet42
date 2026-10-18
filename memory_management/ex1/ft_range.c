@@ -16,31 +16,31 @@
 int	*ft_range(int min, int max)
 {
 	int	range;
-	int i;
+	int	i;
 	int	*tab_min_max;
-	
+
 	if (min >= max)
 		return (NULL);
 	range = max - min;
 	i = 0;
 	tab_min_max = malloc((range) * sizeof(int));
-	while(i < range)
+	while (i < range)
 	{
 		tab_min_max[i] = min + i;
 		i++;
 	}
 	return (tab_min_max);
 }
+
 int	main(void)
 {
-	int *pt = ft_range(4, 10);
+	int	*pt = ft_range(4, 10);
 	printf("adresse pointee : %p\n", pt);
-	printf("liste : %s", pt);
-	for(int i = 0; i < 6; i++)
+	//printf("liste : %i", *pt);
+	for (int i = 0; i < 6; i++)
 	{
-	printf("%i", pt[i]);
+		printf("%i", pt[i]);
 	}
 	free(pt);
-	return 0;
-
+	return (0);
 }

@@ -15,21 +15,21 @@ char	*ft_strdup(char *src)
 	int	*copy;
 	int	i;
 
-    i = 0;
-    while (src[i] != '\0')
-	{
-        i++;
-    }
-    copy = malloc((i + 1)* sizeof(char));
-    if (copy == NULL)
-        return (NULL);
 	i = 0;
-    while(src[i] != '\0')
-    {
-        copy[i] = src[i];
-        i++;
-    }
-    copy[i] = '\0';
-    return (copy);
+	while (src[i] != '\0')
+	{
+		i++;
+	}
+	copy = malloc((i + 1) * sizeof(char));
+	if (copy == NULL)
+		return (NULL);
+	i = 0;
+	while (src[i] != '\0')
+	{
+		copy[i] = src[i];
+		i++;
+	}
+	copy[i] = '\0';
+	return (copy);
 }
-//sof aide 
+// sof aide

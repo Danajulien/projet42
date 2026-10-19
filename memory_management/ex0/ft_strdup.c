@@ -6,14 +6,17 @@
 /*   By: jlodenot <jlodenot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 15:14:20 by jlodenot          #+#    #+#             */
-/*   Updated: 2026/10/13 00:28:42 by jlodenot         ###   ########.fr       */
+/*   Updated: 2026/10/19 14:31:00 by jlodenot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+#include <stdlib.h>
+
 char	*ft_strdup(char *src)
 {
-	int	*copy;
-	int	i;
+	char	*copy;
+	int		i;
 
 	i = 0;
 	while (src[i] != '\0')
@@ -33,3 +36,8 @@ char	*ft_strdup(char *src)
 	return (copy);
 }
 // sof aide
+// int	main(void)
+// {
+// 	printf("%s", ft_strdup("sos le/a reviewer/euse"));
+// 	return 0;
+// }

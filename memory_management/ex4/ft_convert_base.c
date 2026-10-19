@@ -6,7 +6,7 @@
 /*   By: jlodenot <jlodenot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 19:33:29 by jlodenot          #+#    #+#             */
-/*   Updated: 2026/10/13 21:48:07 by jlodenot         ###   ########.fr       */
+/*   Updated: 2026/10/19 13:53:32 by jlodenot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ int	to_power(int num, int power)
 char	*int_to_base(int num_int, char *base_to, int is_neg)
 {
 	int		i;
+	int		nbr_len;
 	int		copy_int;
 	char	*new_nbr;
 
-	int nbr_len; // nombre de chiffre qu,il faut pour ecrire num_int en base_to
 	nbr_len = 0;
 	copy_int = num_int;
 	while (copy_int > 0)
@@ -94,6 +94,7 @@ int	ft_convert_to_int(char *nbr, char *base_from)
 		return (-base_in_int);
 	return (base_in_int);
 }
+
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
 	int	is_neg;
@@ -103,29 +104,34 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 		return (NULL);
 	nbr_int = ft_convert_to_int(nbr, base_from);
 	if (nbr_int < 0)
+	{
 		is_neg = 1;
+		return (int_to_base(-nbr_int, base_to, is_neg));
+	}
 	else
+	{
 		is_neg = 0;
-	return (int_to_base(-nbr_int, base_to, is_neg));
+		return (int_to_base(nbr_int, base_to, is_neg));
+	}
 }
 
-int	main(void)
-{
-	char	*base_10;
-	char	*num;
-	char	*base_hexa;
-	char	*nbr_converted;
+// int	main(void)
+// {
+// 	char	*base_10;
+// 	char	*num;
+// 	char	*base_hexa;
+// 	char	*nbr_converted;
 
-	// char *base_binaire = {"01"};
-	base_10 = "0123456789";
-	num = "-ee";
-	base_hexa = "0123456789abcdef";
-	nbr_converted = ft_convert_base(num, base_hexa, base_10);
-	if (nbr_converted == NULL)
-		return (1);
-	// printf("%i\n", ft_convert_to_int(num, base_binaire));
-	printf("%s", nbr_converted);
-	// printf("%s", int_to_base(255, base2));
-	free(nbr_converted);
-	return (0);
-}
+// 	// char *base_binaire = {"01"};
+// 	base_10 = "0123456789";
+// 	num = "-fe";
+// 	base_hexa = "0123456789abcdef";
+// 	nbr_converted = ft_convert_base(num, base_hexa, base_10);
+// 	if (nbr_converted == NULL)
+// 		return (1);
+// 	printf("%i\n", ft_convert_to_int(num, base_hexa));
+// 	printf("%s", nbr_converted);
+// 	// printf("%s", int_to_base(255, base2));
+// 	free(nbr_converted);
+// 	return (0);
+// }

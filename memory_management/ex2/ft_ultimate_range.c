@@ -6,7 +6,7 @@
 /*   By: jlodenot <jlodenot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 15:36:56 by jlodenot          #+#    #+#             */
-/*   Updated: 2026/10/12 19:30:44 by jlodenot         ###   ########.fr       */
+/*   Updated: 2026/10/19 17:27:16 by jlodenot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_ultimate_range(int **range, int min, int max)
 
 	if (min >= max)
 	{
-		range = NULL;
+		*range = NULL;
 		return (0);
 	}
 	range_min_max = max - min;
@@ -39,7 +39,7 @@ int	main(void)
 {
 	int *pt;
 	int **p_pt = &pt;
-	int range = ft_ultimate_range(p_pt, 4, 10);
+	int range = ft_ultimate_range(p_pt, 5, 5);
 	printf("%p  est l'adresse ou est stocke : %p\n", p_pt, pt);
 
 	printf("adresse pointee : %p\n", pt);

@@ -6,7 +6,7 @@
 /*   By: jlodenot <jlodenot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 14:53:28 by jlodenot          #+#    #+#             */
-/*   Updated: 2026/10/12 19:30:18 by jlodenot         ###   ########.fr       */
+/*   Updated: 2026/10/19 14:50:18 by jlodenot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ int	*ft_range(int min, int max)
 	return (tab_min_max);
 }
 
-int	main(void)
-{
-	int	*pt = ft_range(4, 10);
-	printf("adresse pointee : %p\n", pt);
-	//printf("liste : %i", *pt);
-	for (int i = 0; i < 6; i++)
-	{
-		printf("%i", pt[i]);
-	}
-	free(pt);
-	return (0);
-}
+// int	main(void)
+// {
+// 	int *pt = ft_range(4, 10);
+// 	printf("adresse pointee : %p\n", pt);
+// 	// printf("liste : %i", *pt);
+// 	for (int i = 0; i < 6; i++)
+// 	{
+// 		printf("%i", pt[i]);
+// 	}
+// 	free(pt);
+// 	return (0);
+// }

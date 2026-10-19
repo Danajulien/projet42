@@ -5,91 +5,115 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlodenot <jlodenot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/13 22:06:32 by jlodenot          #+#    #+#             */
-/*   Updated: 2026/10/13 22:53:35 by jlodenot         ###   ########.fr       */
+/*   Created: 2026/10/15 21:07:17 by jlodenot          #+#    #+#             */
+/*   Updated: 2026/10/19 14:24:05 by jlodenot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-int	is_seperation(char c, char *separation)
+int	is_sep(char c, char *sep)
 {
 	int	i;
 
 	i = 0;
-	while (separation[i])
+	while (sep[i])
 	{
-		if (c == separation[i])
+		if (c == sep[i] || c == '\0')
 			return (1);
 		i++;
 	}
 	return (0);
 }
-int	word_count(char *phrase, char *separateur)
+
+int	letter_in_word(char *str, char *sep)
 {
 	int	i;
-	int	words;
 
 	i = 0;
-	words = 0;
-	while (phrase[i])
+	while (is_sep(str[i], sep) == 0 && str[i] != '\0')
 	{
-		if ((i != 0 && is_seperation(phrase[i], separateur)
-			&& !(is_seperation(phrase[i - 1], separateur))) 
-			|| ((phrase[i + 1] == '\0') && !(is_seperation(phrase[i], separateur))))
-		{
-			words++;
-			i++;
-		}
-		else
-			i++;
+		i++;
 	}
-	return (words);
+	return (i);
 }
 
-char	**ft_split(char *str, char *charset)
+int	count_words(char *str, char *sep)
 {
+	int	i;
+	int	word_count;
+
+	i = 0;
+	word_count = 0;
+	while (str[i])
+	{
+		if ((is_sep(str[i + 1], sep) == 1 && is_sep(str[i], sep) != 1)
+			|| (str[i + 1] == '\0' && is_sep(str[i], sep) == 0))
+			word_count++;
+		i++;
+	}
+	return (word_count);
 }
 
-int	main(void)
+char	*ft_strcpy(char *str, char *str_src, int *str_i, char *sep)
 {
-	char	*phrase;
-	char	separateurs[3] = {' ', '\n', '\0'};
-	char	b;
+	int	word_ar_i;
 
-	phrase = "caca prout zizi   s ";
-	b = ' ';
-	printf("%i", is_seperation(b, separateurs));
-	printf("%i", word_count(phrase, separateurs));
-	return (0);
+	word_ar_i = 0;
+	str = malloc(sizeof(char)
+			* (letter_in_word(str_src + *str_i, sep) + 1));
+	while (is_sep(str_src[*str_i], sep) == 0)
+	{
+		str[word_ar_i] = str_src[*str_i];
+		(*str_i)++;
+		word_ar_i++;
+	}
+	str[word_ar_i] = '\0';
+	return (str);
 }
 
-/*
-fonction is separateur (char c , char* seperateurs)
-	je dois prendre un charactere c
-	je dois le comparer un a un a tous les character de la chaine separateur
-	si le character est egal a un separateur , return 1
-	apres avoir parcourru toute la chaine,
-		je return 0 car le charactere ne correspondait a aucun char separateur
+char	**ft_split(char *str, char *sep)
+{
+	int		str_i;
+	int		word_total;
+	char	**w_list;
+	int		word_nbr;
 
-	creer compteur de lettre dans le mot actuel
-	creer compteur de mot
-	je dois parcourir une premiere fois la string pour compter le nombre de mot
-		je compare le caractere actuel pour voir si c est un separateur
-			si oui ET que le precedent n'etait pas un separateur ou qu on est a la fin de la string
-				compteur de mot ++
-				i++
-			si non oui que le char precedent est un separateur
-				i++
-		i est le nombre de mot dans la string
+	word_total = count_words(str, sep);
+	w_list = malloc(sizeof(char *) * (word_total + 1));
+	w_list[count_words(str, sep)] = NULL;
+	word_nbr = 0;
+	str_i = 0;
+	while (word_nbr < word_total)
+	{
+		if ((str_i == 0 && is_sep(str[str_i], sep) == 1)
+			|| (is_sep(str[str_i], sep)
+				&& (is_sep(str[str_i - 1], sep))))
+			str_i++;
+		else
+		{
+			w_list[word_nbr] = ft_strcpy(w_list[word_nbr], str, &str_i, sep);
+			word_nbr ++;
+			str_i++;
+		}
+	}
+	return (w_list);
+}
 
-	je cree un tableau de tableau de taille i,
-		donc je fait tableau[][] = malloc(i * sizeof(char*))
-	creer un compteur de nombre de mot
-	creer un compteur de nombre de lettre dans le mot actuel
-	comteur i pour parcourir la string
-	je dois parcourir la chaine str charactere par charactere
-		je dois regarder si le character actuel est un character separateur
-			si oui je dois creer un char mot* malloc de la taille du mot jusqu a present
-*/
+// int	main(void)
+// {
+// 	char	*phrase = "kiwi du jardin de mami";
+// 	char	**tab_words;
+// 	char *sep = " \n";
+// 	tab_words = ft_split(phrase, sep);
+// 	int i = 0;
+// 	while (tab_words[i] != NULL)
+// 	{
+// 		printf("%s\n", tab_words[i]);
+// 		free(tab_words[i]);
+// 		i++;
+// 	}
+// 	free(tab_words);
+// 	return 0;
+// }

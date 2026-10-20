@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlodenot <jlodenot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/15 21:07:17 by jlodenot          #+#    #+#             */
-/*   Updated: 2026/10/19 14:24:05 by jlodenot         ###   ########.fr       */
+/*   Updated: 2026/10/20 17:51:47 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,19 +101,19 @@ char	**ft_split(char *str, char *sep)
 	return (w_list);
 }
 
-// int	main(void)
-// {
-// 	char	*phrase = "kiwi du jardin de mami";
-// 	char	**tab_words;
-// 	char *sep = " \n";
-// 	tab_words = ft_split(phrase, sep);
-// 	int i = 0;
-// 	while (tab_words[i] != NULL)
-// 	{
-// 		printf("%s\n", tab_words[i]);
-// 		free(tab_words[i]);
-// 		i++;
-// 	}
-// 	free(tab_words);
-// 	return 0;
-// }
+int	main(void)
+{
+	char	*phrase = "kiwi du jardin de mami";
+	char	**tab_words;
+	char *sep = " \n";
+	tab_words = ft_split(phrase, sep);
+	int i = 0;
+	while (tab_words[i] != NULL)
+	{
+		printf("%s\n", tab_words[i]);
+		free(tab_words[i]);
+		i++;
+	}
+	free(tab_words);
+	return 0;
+}

@@ -6,14 +6,36 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 19:33:29 by jlodenot          #+#    #+#             */
-/*   Updated: 2026/10/20 20:13:13 by codespace        ###   ########.fr       */
+/*   Updated: 2026/10/20 22:27:55 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-int		is_valid_base(char *base);
+int	is_valid_base(char *base)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (base[i] != '\0')
+	{
+		if (base[i] == ' ' || base[i] == '+' || base[i] == '-')
+			return (0);
+		j = i + 1;
+		while (base[j] != '\0')
+		{
+			if (base[i] == base[j])
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	if (i < 2)
+		return (0);
+	return (1);
+}
 
 int	is_num_number_of(char c, char *str)
 {
@@ -27,23 +49,12 @@ int	is_num_number_of(char c, char *str)
 	return (i);
 }
 
-int	to_power(int num, int power)
+char	*int_to_base(long num_int, char *base_to, int is_neg)
 {
-	int	i;
-
-	i = num;
-	if (power == 0)
-		return (1);
-	i *= to_power(i, power - 1);
-	return (i);
-}
-
-char	*int_to_base(int num_int, char *base_to, int is_neg)
-{
-	int		i;
-	int		nbr_len;
-	int		copy_int;
-	char	*new_nbr;
+	int			i;
+	int			nbr_len;
+	long		copy_int;
+	char		*new_nbr;
 
 	nbr_len = 1;
 	copy_int = num_int / is_num_number_of('\0', base_to);
@@ -67,13 +78,12 @@ char	*int_to_base(int num_int, char *base_to, int is_neg)
 	return (new_nbr);
 }
 
-int	ft_convert_to_int(char *nbr, char *base_from)
+long	ft_convert_to_int(char *nbr, char *base_from)
 {
-	int	size_base_from;
-	int	i;
-	int	base_in_int;
-	int	size_num;
-	int	is_neg;
+	int		size_base_from;
+	int		i;
+	long	base_in_int;
+	int		is_neg;
 
 	size_base_from = is_num_number_of('\0', base_from);
 	is_neg = 0;
@@ -81,13 +91,12 @@ int	ft_convert_to_int(char *nbr, char *base_from)
 	{
 		is_neg = 1;
 	}
-	size_num = (is_num_number_of('\0', nbr) - is_neg);
 	i = 0;
 	base_in_int = 0;
 	while (nbr[i + is_neg] != '\0')
 	{
-		base_in_int += is_num_number_of(nbr[i + is_neg], base_from)
-			* (to_power(size_base_from, size_num - 1 - i));
+		base_in_int = (base_in_int * size_base_from)
+			+ is_num_number_of(nbr[i + is_neg], base_from);
 		i++;
 	}
 	if (nbr[0] == '-')
@@ -98,8 +107,7 @@ int	ft_convert_to_int(char *nbr, char *base_from)
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
 	int		is_neg;
-	int		nbr_int;
-	char	*zero;
+	long	nbr_int;
 
 	if ((is_valid_base(base_from) == 0 || is_valid_base(base_to) == 0))
 		return (NULL);
@@ -109,17 +117,10 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 		is_neg = 1;
 		return (int_to_base(-nbr_int, base_to, is_neg));
 	}
-	else if (nbr_int > 0)
+	else
 	{
 		is_neg = 0;
 		return (int_to_base(nbr_int, base_to, is_neg));
-	}
-	else
-	{
-		zero = malloc(sizeof(char) * 2);
-		if (zero != NULL)
-			zero = "0\0";
-		return (zero);
 	}
 }
 
@@ -132,7 +133,7 @@ int	main(void)
 
 	// char *base_binaire = {"01"};
 	base_10 = "0123456789";
-	num = "0";
+	num = "000511";
 	base_hexa = "0123456789abcdef";
 	nbr_converted = ft_convert_base(num, base_10, base_hexa);
 	if (nbr_converted == NULL)

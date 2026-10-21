@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
+/*   ft_is_printable.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlodenot <jlodenot@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_printable(char *str)
+int	ft_is_printable(char *str)
 {
 	int	i;
 	i = 0;
@@ -25,6 +25,6 @@ int	ft_str_is_printable(char *str)
 #include <stdio.h>
 int	main(void)
 {
-	printf("result : %d", ft_str_is_printable("suis je imprimable ?"));
+	printf("result : %d", ft_is_printable("suis je imprimable ?"));
 	return 0;
 }

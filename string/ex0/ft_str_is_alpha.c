@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_is_alpha.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlodenot <jlodenot@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_alpha(char *str)
+int	ft_is_alpha(char *str)
 {
 	int	i;
 
@@ -28,7 +28,7 @@ int	ft_str_is_alpha(char *str)
 int	main(void)
 {
 	char retour = '0';
-	retour += ft_str_is_alpha("bonjourjaimelesharicots");
+	retour += ft_is_alpha("bonjourjaimelesharicots");
 	write(1, &retour, 1);
 	return (0);
 }

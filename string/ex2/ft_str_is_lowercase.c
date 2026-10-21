@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_lowercase.c                              :+:      :+:    :+:   */
+/*   ft_is_lowercase.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlodenot <jlodenot@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_lowercase(char *str)
+int	ft_is_lowercase(char *str)
 {
 	int	i;
 
@@ -27,7 +27,7 @@ int	ft_str_is_lowercase(char *str)
 #include <stdio.h>
 int	main(void)
 {
-	printf("return = %d", ft_str_is_lowercase("fivesixesevenheighT"));
+	printf("return = %d", ft_is_lowercase("fivesixesevenheighT"));
 	return (0);
 }
 */

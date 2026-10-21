@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/15 21:07:17 by jlodenot          #+#    #+#             */
-/*   Updated: 2026/10/20 17:51:47 by codespace        ###   ########.fr       */
+/*   Updated: 2026/10/21 01:23:42 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,20 @@ int	count_words(char *str, char *sep)
 	return (word_count);
 }
 
-char	*ft_strcpy(char *str, char *str_src, int *str_i, char *sep)
+char	*ft_strcpy(char *str_src, int *i, char *sep)
 {
+	char *str;
 	int	word_ar_i;
 
 	word_ar_i = 0;
 	str = malloc(sizeof(char)
-			* (letter_in_word(str_src + *str_i, sep) + 1));
-	while (is_sep(str_src[*str_i], sep) == 0)
+			* (letter_in_word(str_src + *i, sep) + 1));
+	if (str == NULL)
+		return NULL;
+	while (is_sep(str_src[*i], sep) == 0 && str_src[*i] != '\0')
 	{
-		str[word_ar_i] = str_src[*str_i];
-		(*str_i)++;
+		str[word_ar_i] = str_src[*i];
+		(*i)++;
 		word_ar_i++;
 	}
 	str[word_ar_i] = '\0';
@@ -75,37 +78,37 @@ char	*ft_strcpy(char *str, char *str_src, int *str_i, char *sep)
 
 char	**ft_split(char *str, char *sep)
 {
-	int		str_i;
-	int		word_total;
+	int		i;
 	char	**w_list;
 	int		word_nbr;
+	int		word_total;
 
 	word_total = count_words(str, sep);
-	w_list = malloc(sizeof(char *) * (word_total + 1));
-	w_list[count_words(str, sep)] = NULL;
+	w_list = malloc(sizeof(char *) * word_total + 1);
+	if (w_list == NULL)
+		return (NULL);
+	w_list[word_total] = NULL;
 	word_nbr = 0;
-	str_i = 0;
+	i = 0;
 	while (word_nbr < word_total)
 	{
-		if ((str_i == 0 && is_sep(str[str_i], sep) == 1)
-			|| (is_sep(str[str_i], sep)
-				&& (is_sep(str[str_i - 1], sep))))
-			str_i++;
-		else
+		if (is_sep(str[i], sep) == 0)
 		{
-			w_list[word_nbr] = ft_strcpy(w_list[word_nbr], str, &str_i, sep);
-			word_nbr ++;
-			str_i++;
+			w_list[word_nbr] = ft_strcpy(str, &i, sep);
+			if (w_list[word_nbr] == NULL)
+				return (NULL);
+			word_nbr++;
 		}
+		i++;
 	}
 	return (w_list);
 }
 
 int	main(void)
 {
-	char	*phrase = "kiwi du jardin de mami";
+	char	*phrase = "les raisins du jardin de mamie";
 	char	**tab_words;
-	char *sep = " \n";
+	char *sep = " \n\t";
 	tab_words = ft_split(phrase, sep);
 	int i = 0;
 	while (tab_words[i] != NULL)

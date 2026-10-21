@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_uppercase.c                              :+:      :+:    :+:   */
+/*   ft_is_uppercase.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlodenot <jlodenot@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_uppercase(char *str)
+int	ft_is_uppercase(char *str)
 {
 	int	i;
 
@@ -26,6 +26,6 @@ int	ft_str_is_uppercase(char *str)
 #include <stdio.h>
 int	main(void)
 {
-	printf("result : %d", ft_str_is_uppercase("AAAAAAAAAHb"));
+	printf("result : %d", ft_is_uppercase("AAAAAAAAAHb"));
 	return (0);
 }

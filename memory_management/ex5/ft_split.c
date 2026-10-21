@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/15 21:07:17 by jlodenot          #+#    #+#             */
-/*   Updated: 2026/10/21 01:23:42 by codespace        ###   ########.fr       */
+/*   Updated: 2026/10/21 01:25:47 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,14 @@ int	count_words(char *str, char *sep)
 
 char	*ft_strcpy(char *str_src, int *i, char *sep)
 {
-	char *str;
-	int	word_ar_i;
+	char	*str;
+	int		word_ar_i;
 
 	word_ar_i = 0;
 	str = malloc(sizeof(char)
 			* (letter_in_word(str_src + *i, sep) + 1));
 	if (str == NULL)
-		return NULL;
+		return (NULL);
 	while (is_sep(str_src[*i], sep) == 0 && str_src[*i] != '\0')
 	{
 		str[word_ar_i] = str_src[*i];
@@ -103,20 +103,19 @@ char	**ft_split(char *str, char *sep)
 	}
 	return (w_list);
 }
-
-int	main(void)
-{
-	char	*phrase = "les raisins du jardin de mamie";
-	char	**tab_words;
-	char *sep = " \n\t";
-	tab_words = ft_split(phrase, sep);
-	int i = 0;
-	while (tab_words[i] != NULL)
-	{
-		printf("%s\n", tab_words[i]);
-		free(tab_words[i]);
-		i++;
-	}
-	free(tab_words);
-	return 0;
-}
+// int	main(void)
+// {
+// 	char	*phrase = "les raisins du jardin de mamie";
+// 	char	**tab_words;
+// 	char *sep = " \n\t";
+// 	tab_words = ft_split(phrase, sep);
+// 	int i = 0;
+// 	while (tab_words[i] != NULL)
+// 	{
+// 		printf("%s\n", tab_words[i]);
+// 		free(tab_words[i]);
+// 		i++;
+// 	}
+// 	free(tab_words);
+// 	return 0;
+// }

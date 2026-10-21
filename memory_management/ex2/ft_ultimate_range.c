@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ultimate_range.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlodenot <jlodenot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 15:36:56 by jlodenot          #+#    #+#             */
-/*   Updated: 2026/10/19 17:27:16 by jlodenot         ###   ########.fr       */
+/*   Updated: 2026/10/21 01:27:16 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,20 @@ int	ft_ultimate_range(int **range, int min, int max)
 	}
 	return (range_min_max);
 }
-int	main(void)
-{
-	int *pt;
-	int **p_pt = &pt;
-	int range = ft_ultimate_range(p_pt, 5, 5);
-	printf("%p  est l'adresse ou est stocke : %p\n", p_pt, pt);
+// int	main(void)
+// {
+// 	int *pt;
+// 	int **p_pt = &pt;
+// 	int range = ft_ultimate_range(p_pt, 5, 5);
+// 	printf("%p  est l'adresse ou est stocke : %p\n", p_pt, pt);
 
-	printf("adresse pointee : %p\n", pt);
-	printf("taille : %i\n", range);
-	printf("liste : ");
-	for (int i = 0; i < 6; i++)
-	{
-		printf("%i", pt[i]);
-	}
-	free(pt);
-	return (0);
-}
+// 	printf("adresse pointee : %p\n", pt);
+// 	printf("taille : %i\n", range);
+// 	printf("liste : ");
+// 	for (int i = 0; i < 6; i++)
+// 	{
+// 		printf("%i", pt[i]);
+// 	}
+// 	free(pt);
+// 	return (0);
+// }

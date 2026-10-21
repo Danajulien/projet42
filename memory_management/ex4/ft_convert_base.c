@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 19:33:29 by jlodenot          #+#    #+#             */
-/*   Updated: 2026/10/20 22:27:55 by codespace        ###   ########.fr       */
+/*   Updated: 2026/10/21 01:27:56 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,23 +124,23 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	}
 }
 
-int	main(void)
-{
-	char	*base_10;
-	char	*num;
-	char	*base_hexa;
-	char	*nbr_converted;
+// int	main(void)
+// {
+// 	char	*base_10;
+// 	char	*num;
+// 	char	*base_hexa;
+// 	char	*nbr_converted;
 
-	// char *base_binaire = {"01"};
-	base_10 = "0123456789";
-	num = "000511";
-	base_hexa = "0123456789abcdef";
-	nbr_converted = ft_convert_base(num, base_10, base_hexa);
-	if (nbr_converted == NULL)
-		return (1);
-	//printf("%i\n", ft_convert_to_int(num, base_hexa));
-	printf("%s", nbr_converted);
-	// printf("%s", int_to_base(255, base2));
-	free(nbr_converted);
-	return (0);
-}
+// 	// char *base_binaire = {"01"};
+// 	base_10 = "0123456789";
+// 	num = "000511";
+// 	base_hexa = "0123456789abcdef";
+// 	nbr_converted = ft_convert_base(num, base_10, base_hexa);
+// 	if (nbr_converted == NULL)
+// 		return (1);
+// 	//printf("%i\n", ft_convert_to_int(num, base_hexa));
+// 	printf("%s", nbr_converted);
+// 	// printf("%s", int_to_base(255, base2));
+// 	free(nbr_converted);
+// 	return (0);
+// }

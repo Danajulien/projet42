@@ -6,7 +6,8 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 19:33:45 by jlodenot          #+#    #+#             */
-/*   Updated: 2026/10/20 22:26:42 by codespace        ###   ########.fr       */
+/*   Updated: 2026/10/21 01:29:03 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+int	is_valid_base(char *base);

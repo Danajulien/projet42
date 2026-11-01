@@ -10,9 +10,9 @@ typedef struct s_player
 
 t_player *ft_build_team(t_player *players, int count, int min_energy, int *team_count)
 {
-    if(team_count)
+    if(team_count != NULL )
         *team_count = 0;
-    if(players == NULL || count == 0 ||team_count == NULL)
+    if(players == NULL || count <= 0 ||team_count == NULL)
         return NULL;
 
     for(int i = 0; i < count; i++)
@@ -20,6 +20,8 @@ t_player *ft_build_team(t_player *players, int count, int min_energy, int *team_
         if(players[i].energy >= min_energy)
             (*team_count)++;
     }
+    if(*team_count == 0)
+        return NULL;
     t_player *team = malloc(*team_count * sizeof(t_player));
     if(team == NULL)
     {
@@ -38,4 +40,9 @@ t_player *ft_build_team(t_player *players, int count, int min_energy, int *team_
         }
     }
     return team;
+}
+
+int main(void)
+{
+
 }

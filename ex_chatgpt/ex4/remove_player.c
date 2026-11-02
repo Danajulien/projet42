@@ -9,7 +9,7 @@ typedef struct s_player
 
 int ft_remove_player(t_player *players, int *count, int index)
 {
-    if(players == NULL || count == NULL || *count <= 0 || index >= *count)
+    if(players == NULL || count == NULL || *count <= 0 || index >= *count || index < 0)
         return 0;
     (*count)--;
     for(int i = index; i < *count; i++)

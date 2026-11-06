@@ -34,9 +34,9 @@ int main(void)
         {"othilie", 50, 18},
         {"john", 60, 50},
         {"greg", 65, 55}
-    }
-    t_player_node *greg = {players[2], NULL};
-    t_player_node *john = {players[1], greg};
-    t_player_node *head = {players[0], john};
-    ft_take_player(head, 10, out);
+    };
+    t_player_node greg = {players[2], NULL};
+    t_player_node john = {players[1], &greg};
+    t_player_node head = {players[0], &john};
+    ft_take_player(&head, 10, &out);
 }

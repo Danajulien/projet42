@@ -58,6 +58,7 @@ int ft_take_player(t_player_node **head, int min_energy, t_player *out)
             out->energy = current->player.energy;
             out->score = current->player.score;
             //t_player_node *temp = current;
+            printf("1");
             before->next = current->next;
             return 1;
            }
@@ -69,17 +70,23 @@ int ft_take_player(t_player_node **head, int min_energy, t_player *out)
 int main(void)
 {
     t_player players[3] = {
-        {"othilie", 50, 18},
+        {"othilie", 70, 18},
         {"john", 60, 50},
         {"greg", 65, 55}
     };
     t_player out;
-    t_player_node greg = {players[2], NULL};
-    t_player_node john = {players[1], &greg};
-    t_player_node othilie = {players[0], &john};
-    t_player_node *head = &othilie;
+    t_player_node *greg = malloc(sizeof(t_player_node));
+    greg->player = players[2];
+    greg->next = NULL;
+    t_player_node *john = malloc(sizeof(t_player_node));
+    john->player = players[1];
+    john->next = greg;
+    t_player_node *othilie = malloc(sizeof(t_player_node));
+    othilie->player = players[0]; 
+    othilie->next = john;
+    t_player_node *head = othilie;
 
-    ft_take_player(&head, 55, &out);
+    ft_take_player(&head, 17, &out);
     for(t_player_node *current = head;
         current != NULL; current = current->next)
         {

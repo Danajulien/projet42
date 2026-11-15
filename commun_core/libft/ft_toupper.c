@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned char ft_toupper(unsigned char c)
+int ft_toupper(unsigned char c)
 {
     if(c >= 'a' && c <= 'z')
         return (c - 32);

@@ -6,14 +6,14 @@
 /*   By: jlodenot <jlodenot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 17:07:54 by jlodenot          #+#    #+#             */
-/*   Updated: 2026/11/12 17:12:24 by jlodenot         ###   ########.fr       */
+/*   Updated: 2026/11/17 21:55:25 by jlodenot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include "libft.h"
 
-size_t ft_strlcat(char *dst, char *src, size_t size)
+size_t ft_strlcat(char *dst, const char *src, size_t size)
 {
     //tester si on trouve \0 dans les size premier octet de dst
     size_t i;

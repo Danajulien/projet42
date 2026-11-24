@@ -1,8 +1,11 @@
 #include "libft.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-int main(void)
-{
-    printf("%zu", ft_strlen(""));
-    return (0);
+int main() {
+    char *s = ft_strtrim("abcdba", "bac");
+  printf("%s", s);
+  free(s);
+  return 0;
 }

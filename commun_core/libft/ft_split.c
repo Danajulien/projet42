@@ -6,7 +6,7 @@
 /*   By: jlodenot <jlodenot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/24 14:13:44 by jlodenot          #+#    #+#             */
-/*   Updated: 2026/11/24 18:09:12 by jlodenot         ###   ########.fr       */
+/*   Updated: 2026/11/25 14:54:34 by jlodenot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	ft_free(char **words)
 		free(words);
 		return ;
 	}
-	while (words[i])
+	while (words[i] != NULL)
 	{
 		free(words[i]);
 		i++;
@@ -79,19 +79,17 @@ char	**ft_split(const char *s, const char sep)
 	if (s == NULL)
 		return (NULL);
 	word_count = ft_word_count(s, sep);
-	word_array = malloc(sizeof(char *) * word_count + 1);
+	//printf("word count = %ld", word_count);
+	word_array = malloc(sizeof(char *) * (word_count + 1));
 	i = 0;
 	j = 0;
-	if (word_count == 0 || word_array == NULL)
-	{
-		free(word_array);
+	if (word_array == NULL)
 		return (NULL);// jsp si je dois quand meme malloc pour un NULL
-	}
 	while (i < word_count)
 	{
 		while (s[j] == sep)
 			j++;
-		word_array[i] = ft_substr(s, (unsigned int)j, ft_len_to_sep(s, sep) + 1);
+		word_array[i] = ft_substr(s, (unsigned int)j, ft_len_to_sep(s + j, sep));
 		while (s[j] != sep && s[j])
 			j++;
 		i++;
@@ -99,3 +97,9 @@ char	**ft_split(const char *s, const char sep)
 	word_array[i] = NULL;
 	return(word_array);
 }
+
+// int	main(void)
+// {
+// 	char **mots = ft_split("haricot rouge caca", ' ');
+// 	ft_free(mots);
+// }

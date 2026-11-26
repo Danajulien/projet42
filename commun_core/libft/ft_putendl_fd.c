@@ -6,13 +6,13 @@
 /*   By: jlodenot <jlodenot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/25 21:45:27 by jlodenot          #+#    #+#             */
-/*   Updated: 2026/11/26 00:40:48 by jlodenot         ###   ########.fr       */
+/*   Updated: 2026/11/27 00:35:38 by jlodenot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_putendl_fd(char *s, int fd)
 {
 	int	i;
 
